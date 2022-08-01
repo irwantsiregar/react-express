@@ -25,9 +25,18 @@ app.use(cors());
     app.use(cors(corsOptions));  
 */
 
+/* ## Mengkompresi Response dengan Middleware
+Untuk mengoptimasi response yang akan diterima oleh browser maka kita bisa mengcompress konten respon terlebih dahulu sebelum dikirimkan ke browser. 
+ExpressJS juga menyediakan built-in middleware untuk mengangani hal ini yaitu 'compression'
+Middleware ini akan mencompress menggunakan metode kompresi gzip.
+*/
+const compression = require('compression');
 
 // deklarasi routing
 const routers = require('./routers');
 app.use(routers);
+
+// middleware compression
+app.use(compression());
 
 app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
