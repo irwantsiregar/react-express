@@ -1,0 +1,39 @@
+IRWAN@DESKTOP-PUC61V7 MINGW64 /d/REACT - EXPRESS/EXPRESS
+$ mkdir express-app
+
+IRWAN@DESKTOP-PUC61V7 MINGW64 /d/REACT - EXPRESS/EXPRESS
+$ cd express-app
+
+IRWAN@DESKTOP-PUC61V7 MINGW64 /d/REACT - EXPRESS/EXPRESS/express-app
+$ git init
+
+IRWAN@DESKTOP-PUC61V7 MINGW64 /d/REACT - EXPRESS/EXPRESS/express-app (master)
+$ touch .gitignore
+
+IRWAN@DESKTOP-PUC61V7 MINGW64 /d/REACT - EXPRESS/EXPRESS/express-app (master)
+$ npm install express --save
+
+IRWAN@DESKTOP-PUC61V7 MINGW64 /d/REACT - EXPRESS/EXPRESS/express-app (master)
+$ touch index.js
+
+IRWAN@DESKTOP-PUC61V7 MINGW64 /d/REACT - EXPRESS/EXPRESS/express-app (master)
+$ git add .
+
+IRWAN@DESKTOP-PUC61V7 MINGW64 /d/REACT - EXPRESS/EXPRESS/express-app (master)
+$ git commit -m "first commit"
+
+IRWAN@DESKTOP-PUC61V7 MINGW64 /d/REACT - EXPRESS/EXPRESS/express-app (master)
+$ git checkout -b 0-learn_express
+
+
+
+Middleware
+-body-parser
+-static
+-Multer
+
+Note:
+1. Menangani Log
+  Catatan: ExpressJS juga menyediakan middleware official untuk menangani log yaitu morgan.
+2.Menangani Error
+  Catatan: ExpressJS juga menyediakan built-in middleware untuk menanganu error: error handler
