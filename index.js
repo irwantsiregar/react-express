@@ -40,3 +40,11 @@ app.use(routers);
 app.use(compression());
 
 app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
+
+/* ## Kesimpulan
+ExpressJS merupakan salah satu framework berbasis NodeJS yang sangat populer dan banyak digunakan sebagai dasar dari framework lain. 
+Framework ini tergolong minimalis, sintak-sintaksnya singkat, namun memiliki fitur-fitur standar untuk membangun sebuah aplikasi web.
+Terdapat dua fitur utama yang menjadi kekuatan dari framework ini yaitu:
+  1.fitur untuk menangani routing dan
+  2.fitur middleware.
+*/
