@@ -4,10 +4,30 @@ const port = 3000;
 
 // # Middleware ExpressJS
 
+/* ## Menangani CORS dengan Middleware
+CORS singkatan dari cross origin resource sharing merupakan kondisi di mana suatu aplikasi web
+tertentu menggunakan atau mengakses resource (web service) dari lokasi lain yang berbeda origin
+(alamat domain, protokol (http or https) dan atau port-nya).
+Contoh CORS: aplikasi JS yang dihosting pada alamat domain https://abc.com dengan XMLHttpRequest mengakses web service dengan alamat https://xyz.com.
+Maka untuk alasan keamanan, browser secara default akan menolak akses tersebut. Itu artinya, akses resource secara default hanya diizinikan untuk mengakses ke origin yang sama.
+Ketika terjadi CORS, maka browser akan otomatis menambahkan HTTP header tertentu yang menginformasikan kepada server bahwa request tersebut masuk dalam kategori CORS.
+Untuk mengatasi CORS tersebut maka di sisi server perlu disetting agar request secara CORS diperbolehkan.
+ExpressJS mempunyai built-in middleware untuk menangani CORS yaitu bernama 'cors'.
+*/
+// require module middleware cors
+const cors = require('cors')
+// terapkan pada objek express
+app.use(cors());
+/*  Namun kita bisa memberikan izin yang lebih spesifik dengan menambahkan argumen pada fungsi cors(), misalnya hanya mengizinkan request dari origin tertentu.
+      var corsOptions = {
+      origin: 'http://example.com'
+      }
+    app.use(cors(corsOptions));  
+*/
+
+
 // deklarasi routing
 const routers = require('./routers');
 app.use(routers);
-
-
 
 app.listen(port, () => console.log(`Server running at http://localhost:${port}`));
