@@ -1,111 +1,100 @@
 const express = require('express');
 const routers = express.Router();
-const client = require('./connection');
-const ObjectId = require('mongodb').ObjectId;
+require('./connection');
+const Product = require('./Product');
 const multer = require('multer');
 
 routers.get('/products', async (req, res) => {
-  if (client.isConnected()) {
-    const db = client.db('latihan');
-    const products = await db.collection('products').find().toArray();
+  const products = await Product.find();
 
-    products ? res.send({
-      status: 'success',
-      message: 'List Products',
-      data: products,
-    }) : res.send({
-      status: 'success',
-      message: 'List Products tidak ditemukan',
-    });
-  } else {
-    res.send({
-      status: 'error',
-      message: 'Koneksi database gagal'
-    });
-  }
+  products ? res.send({
+    status: 'success',
+    message: 'list Products',
+    data: products,
+  }) : res.send({
+    status: 'success',
+    message: 'list Products tidak ditemukan',
+  });
 });
 
 routers.get('/product/:id', async (req, res) => {
-  if (client.isConnected()) {
-    const id = req.params.id;
-    const _id = (ObjectId.isValid(id)) ? ObjectId(id) : id;
-
-    const db = client.db('latihan');
-    const product = await db.collection('products').findOne({ _id: _id });
-
-    product ? res.send({
-      status: 'success',
-      message: 'Single Product',
-      data: product,
-    }) : res.send({
-      status: 'success',
-      message: 'Single Product tidak ditemukan',
-    });
-  } else {
-    console.log('koneksi database gagal');
-  }
+  const product = await Product.findById({ _id: req.params.id });
+  product ? res.send({
+    status: 'success',
+    message: 'single Product',
+    data: product,
+  }) : res.send({
+    status: 'warning',
+    message: 'single Product tidak ditemukan',
+  });
 });
 
 routers.post('/product', multer().none(), async (req, res) => {
-  if (client.isConnected()) {
-    const { name, price, stock, status } = req.body;
-    const db = client.db('latihan');
+  const { name, price, stock, status } = req.body;
 
-    const result = await db.collection('products').insertOne({ name, price, stock, status });
+  try {
+    const product = await Product.create({ name, price, stock, status });
 
-    result.insertedCount == 1 ? res.send({
+    product ? res.send({
       status: 'success',
-      message: 'Tambah product success',
+      message: 'tambah product success',
+      data: product,
     }) : res.send({
       status: 'warning',
-      message: 'Tambah product fail',
+      message: 'tambah product fail',
     });
-  } else {
-    res.send('koneksi database gagal');
+  } catch (error) {
+    res.send({
+      status: 'error',
+      message: error.message,
+    });
   }
 });
 
-routers.put('/product/:id', async (req, res) => {
-  if (client.isConnected()) {
-    const { name, price, stock, status } = req.body;
-    const id = req.params.id;
-    const _id = (ObjectId.isValid(id)) ? ObjectId(id) : id;
-
-    const db = client.db('latihan');
-    const result = await db.collection('products').updateOne(
-      { _id: _id },
-      { $set: { name, price, stock, status } }
+routers.put('/product/:id', multer().none(), async (req, res) => {
+  const { name, price, stock, status } = req.body;
+  try {
+    const result = await Product.updateOne(
+      { _id: req.params.id },
+      { name, price, stock, status },
+      { runValidators: true },
     );
 
-    result.matchedCount == 1 ? res.send({
+    result.matchedCount === 1 ? res.send({
       status: 'success',
-      message: 'Update product success',
+      message: 'update product success',
+      data: result,
     }) : res.send({
       status: 'warning',
-      message: 'Update product fail',
+      message: 'update product fail',
+      data: result,
     });
-  } else {
-    res.send('koneksi database gagal');
+  } catch (error) {
+    res.send({
+      status: 'error',
+      message: error.message,
+    });
   }
 });
 
 routers.delete('/product/:id', async (req, res) => {
-  if (client.isConnected()) {
-    const id = req.params.id;
-    const _id = (ObjectId.isValid(id)) ? ObjectId(id) : id;
+  try {
+    const result = await Product.deleteOne({ _id: req.params.id });
 
-    const db = client.db('latihan');
-    const result = await db.collection('products').deleteOne({ _id: _id });
-
-    result.deletedCount == 1 ? res.send({
+    result.deletedCount === 1 ? res.send({
       status: 'success',
-      message: 'Delete product success',
+      message: 'delete product success',
+      data: result,
     }) : res.send({
       status: 'warning',
-      message: 'Delete product fail',
+      message: 'delete product fail',
+      data: result,
     });
-  } else {
-    res.send('koneksi database gagal');
+  } catch (error) {
+    res.send({
+      status: 'error',
+      message: error.message,
+    });
   }
 });
 
