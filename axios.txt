@@ -1,0 +1,30 @@
+// Untuk menggunakan pada aplikasi ReactJS kita maka kita cukup dengan mengimportnya maka kemudian fungsi Axios otomatis bisa digunakan.
+const Axios = require('axios'); 
+      // atau
+import Axios from 'axios';
+
+// Karena berbasis promise maka kita bisa menggunakan Axios dengan dua cara yaitu promise dan async / await.
+// Cara promise:
+Axios.get('http://localhost:3000/products')
+  .then((response) => {
+    // handle success
+    console.log(response);
+  })
+  .catch((error) => {
+    // handle error
+    console.log(error);
+  })
+  .then(() => {
+    // always executed
+  });
+
+// Cara async / await:
+const getProducts = async () => {
+  try {
+    const response = await Axios.get('http://localhost:3000/products');
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
+getProducts();
