@@ -9,7 +9,7 @@
 - wide-column database
 - graph database
 
-Untuk mengetahui DBMS yang diurutkan berdasarkan popularitasnya dapat mengunjungi halamn web [DBEngines](https://db-engines.com/en/ranking).
+Untuk mengetahui DBMS yang diurutkan berdasarkan popularitasnya dapat mengunjungi halaman web [DBEngines](https://db-engines.com/en/ranking).
 
 MongoDB merupakan database dengan menggunakan model document base, yang menyimpan datanya dalam bentuk dokumen yang mirip dengan JSON.
 
@@ -25,11 +25,11 @@ Bentuk data pada pada MongoDB, seperti berikut:
     "state": "NY",
     "zip": "60234"
   },
-  "hobbies": ["surfing", "coding"]
+  "hobbies": ["ui/design", "typing code"]
 }
 ```
 
-### Padanan istilah antara SQL database(RDMS) dengan MongoDB:
+#### Padanan istilah antara SQL database(RDMS) dengan MongoDB:
 `SQL`
 - database
 - table
@@ -50,7 +50,9 @@ Bentuk data pada pada MongoDB, seperti berikut:
 
 > **Note:** pada MongoDB, primary key otomatis diset sebagai field _id.
 
+
 #### Download [MongoDB](https://www.mongodb.com/try/download/community)
+
 
 ### Menjalankan Query Pada MongoDB Shell
 Ketika sudah menginstalasi mongoDB maka secara otomatis telah terinstalasi juga tools mongoDB Shell.
@@ -69,7 +71,7 @@ $ mongosh atau mongosh --quiet
 ```bash
 > show databases; atau show dbs;
 ```
-Secara default terdapat tiga database bawaan MongoDB yaitu admin, config dan local.
+Secara default terdapat tiga database bawaan MongoDB yaitu `admin, config dan local`.
 
 Untuk menampilkan database yang sedang digunakan oleh user,gunakan perintah: `db`.
 ```bash
@@ -101,8 +103,8 @@ Untuk menampilkan semua collection pada current database, gunakan perintah:
 > show collections;
 quotes
 ```
-> **Note:** - Bisa juga membuat sebuah collection kosong melalui perintah: db.createCollection("quotes");
->           - Untuk menghapus collection berserta isi dokumennya gunakan perintah: db.collection.drop().
+> **Note:** - Bisa juga membuat sebuah collection kosong melalui perintah: `db.createCollection("quotes")`
+> - Untuk menghapus collection berserta isi dokumennya gunakan perintah: `db.collection.drop()`
 
 
 ### Menampilkan Dokumen Collection
@@ -146,7 +148,7 @@ Jika ingin juga membatasi jumlah dokumen yang akan ditampilkan, maka gunakan per
 ```bash
 > db.products.find().sort({ price: 1 }).limit(2);
 ```
-Atau jika ingin menampilkan hanya satu data saja, bisa menggunakan method limit() atau findOne().
+Atau jika ingin menampilkan hanya satu data saja, bisa menggunakan method `limit()` atau `findOne()`.
 ```bash
 > db.products.findOne();
 ```
@@ -215,16 +217,16 @@ Untuk mengaktifkan authentication, maka perlu menambahkan parameter --auth ketik
 ### Role MongoDB
 User pada database MongoDB menyediakan role-role tertentu sesuai dengan hak aksesnya untuk melakukan suatu action atau query tertentu pada database.
 Hak akses pada MongoDB dapat kita set untuk semua database atau untuk database tertentu saja.
-- read (hak akses yang hanya membaca database)
-- readWrite (hak akses yang dapat membaca dan menulis pada database)
-- dbAdmin (hak akses yang lebih tinggi dari readWrite mencakup tugas-tugas administrasi seperti perubahan skema, indexing, statistik)
-- userAdmin (hak akses terkait manajemen role pada database)
-- dbOwner (hak aksesnya kombinasi antara dbAdmin dan userAdmin)
-- readAnyDatabase (sama seperti read tapi untuk semua database)
-- readWriteAnyDatabase (sama seperti readWrite tapi untuk semua database)
-- userAdminAnyDatabase (sama seperti userAdmin tapi untuk semua database)
-- dbAdminAnyDatabase (sama seperti dbAdmin tapi untuk semua database)
-- root (hak akses tertinggi, bisa melakukan apapun pada suatu database atau semua database tergantung bagaimana settingnya).
+- read => hak akses yang hanya membaca database
+- readWrite => hak akses yang dapat membaca dan menulis pada database
+- dbAdmin => hak akses yang lebih tinggi dari readWrite mencakup tugas-tugas administrasi seperti perubahan skema, indexing, statistik
+- userAdmin => hak akses terkait manajemen role pada database
+- dbOwner => hak aksesnya kombinasi antara dbAdmin dan userAdmin
+- readAnyDatabase =>sama seperti read tapi untuk semua database
+- readWriteAnyDatabase => sama seperti readWrite tapi untuk semua database
+- userAdminAnyDatabase => sama seperti userAdmin tapi untuk semua database
+- dbAdminAnyDatabase => sama seperti dbAdmin tapi untuk semua database
+- root => hak akses tertinggi, bisa melakukan apapun pada suatu database atau semua database tergantung bagaimana settingnya
 
 Selengkapnya terdapat pada halaman web [Docs MongoDB](https://docs.mongodb.com/manual/reference/built-in-roles/)
 
