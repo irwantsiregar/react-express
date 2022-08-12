@@ -44,7 +44,7 @@ Selengkapnya kunjungi situs dokumentasi resminya [Mongoose](https://mongoosejs.c
 #### Installation Mongoose
 Pertama install terlebih dahulu [Node.js](https://nodejs.org/en/) dan [MongoDB](https://www.mongodb.com/try/download/community). 
 ```bash
-npm install mongoose --save
+$ npm install mongoose
 ```
 
 ## Getting Started Mongoose
