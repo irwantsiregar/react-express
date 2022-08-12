@@ -1,6 +1,6 @@
-# Object Document Mapping (ODM)
+# 📚👨‍💻 Object Document Mapping (ODM)
 
-### Berkenalan dengan ODM?
+## Berkenalan dengan ODM?
 Object Data Mapping merupakan sebuah metode untuk memetakan data (dokumen) pada
 suatu database dalam bentuk objek, sehingga akan memudahkan pengolahan data tersebut. Juga akan
 memudahkan kita menentukan jenis data, hubungan antar data, validasi data dll.
@@ -14,10 +14,15 @@ dengan langsung menggunakan database driver native.
 
 Pada database relasional, ODM ini dikenal sebagai ORM (Object Relational Mapping).
 
-### Berkenalan dengan Mongoose
+## Berkenalan dengan Mongoose
+[![Build Status](https://github.com/Automattic/mongoose/workflows/Test/badge.svg)](https://github.com/Automattic/mongoose)
+[![NPM version](https://badge.fury.io/js/mongoose.svg)](http://badge.fury.io/js/mongoose)
+
+[![npm](https://nodei.co/npm/mongoose.png)](https://www.npmjs.com/package/mongoose)
+
 Salah satu tools atau framework ODM berbasis NodeJS untuk database MongoDB yang cukup populer adalah `Mongoose`.
 
-`Mongoose` memiliki berbagai fitur diantaranya: modeling data berbasis skema, casting tipe data,
+[Mongoose](https://mongoosejs.com/) memiliki berbagai fitur seperti: modeling data berbasis skema, casting tipe data,
 validation, query building, hook untuk business logic, dsb.
 
 Berikut contoh penerapan kode pada mongoose:
@@ -34,14 +39,15 @@ const jokes = new Jokes({
 quote.save().then(() => console.log('jokes success added'));
 ```
 
-Selengkapnya kunjungi website resminya [Mongoose](https://mongoosejs.com).
+Selengkapnya kunjungi situs dokumentasi resmi [Mongoose](https://mongoosejs.com/docs/guide.html).
 
-Instalation Mongoose:
+##### Installation Mongoose
+Pertama install terlebih dahulu [Node.js](https://nodejs.org/en/) dan [MongoDB](https://www.mongodb.com/try/download/community). 
 ```bash
 npm install mongoose --save
 ```
 
-### Getting Started Mongoose
+## Getting Started Mongoose
 Pada mongoose terdapat beberapa komponen-komponen penyusunnya, yaitu schema, model dan query.
 
 #### Mengenal Schema
@@ -123,7 +129,7 @@ db.once('open', async () => {
   // disini perintah query
 })
 ```
-##### Query Menampilkan List data
+#### Query Menampilkan List data
 Untuk menampilkan list data menggunakan method find().
 ```bash
 // menampilkan list products
@@ -190,7 +196,7 @@ console.log(newStudent);
 // Result: { status: true, _id: 407f14e62ee716d58c675d73, __v: 0 } 
 ```
 
-##### Validasi Required
+#### Validasi Required
 Validasi tersebut bisa kita definisikan pada schema yaitu dengan menambahkan key required bernilai true.
 ```bash
 const studentSchema = new mongoose.Schema({
@@ -216,7 +222,7 @@ try{
 }
 ```
 
-##### Validasi Min & Max
+#### Validasi Min & Max
 Selain itu untuk tipe string, kita juga memvalidasi panjang minimal atau maksimal karakter dengan
 menggunakan minLength dan maxLength.
 ```bash 
@@ -237,7 +243,7 @@ discount: {
 },
 ```
 
-##### Validasi Enum
+#### Validasi Enum
 Validasi built-in lain yang bisa digunakan adalah validasi enum, yaitu membatasi hanya untuk data tertentu saja.
 Validasi ini cocok buat data pilihan. Apabila diisi dengan jenis minuman selain dari yg terdaftar tsb maka akan menampilkan error.
 ```bash
@@ -248,7 +254,7 @@ drink: {
 },
 ```
 
-##### Validasi Unique
+#### Validasi Unique
 Unique sebenarnya bukan validasi namun merupakan helper untuk mendefinisikan bahwa field tersebut `unique`.
 Misalnya kita memiliki schema untuk collection users.
 
@@ -290,7 +296,7 @@ const User = mongoose.model('User', userSchema);
 Jika ditambahkan data user baru dengan email yang tidak valid, maka akan muncul error.
 
 
-##### Query Builder
+#### Query Builder
 Mongoose juga menyediakan query builder, yaitu fungsi-fungsi untuk menyusun sebuah query pada query select.
 Contoh query untuk menampilkan semua produk:
 ```bash
