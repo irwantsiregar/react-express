@@ -1,7 +1,7 @@
 
 # Modern React and Express 
 
-## 📚👨‍💻 Get started by learning 📗[React](https://reactjs.org/) & 📙[Express](https://expressjs.com/)
+## 📚👨‍💻 Get started by learning [React](https://reactjs.org/) & [Express](https://expressjs.com/)
 
 ## Complete guide to Fullstack Javascript Developer
 
@@ -11,6 +11,7 @@
 ::📱🛒REACT
   - [Grid App](https://github.com/irwantsiregar/grid-app).
   - [Routing App](https://github.com/irwantsiregar/routing-app).
+  
 ::📱🛒EXPRESS
   - [Product API](https://github.com/irwantsiregar/react-express/tree/2.2-expressjs_mongodb).
   - [Product App](https://github.com/irwantsiregar/react-express/tree/3-react_expressjs).
