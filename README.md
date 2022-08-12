@@ -1,6 +1,5 @@
 [![Build Status](https://github.com/Automattic/mongoose/workflows/Test/badge.svg)](https://github.com/mongodb/node-mongodb-native)
 [![NPM version](https://badge.fury.io/js/mongodb.svg)](http://badge.fury.io/js/mongodb)
-
 [![npm](https://nodei.co/npm/mongodb.png)](https://www.npmjs.com/package/mongodb)
 
 # 👨‍💻📚Learn MongoDB and operation using CLI
@@ -110,8 +109,8 @@ Untuk menampilkan semua collection pada current database, gunakan perintah:
 > show collections;
 quotes
 ```
-> **Note:** - Bisa juga membuat sebuah collection kosong melalui perintah: `db.createCollection("quotes")`
->Untuk menghapus collection berserta isi dokumennya gunakan perintah: `db.collection.drop()`
+> **Note:** Bisa juga membuat sebuah collection kosong melalui perintah: `db.createCollection("quotes")`. 
+> Untuk menghapus collection berserta isi dokumennya gunakan perintah: `db.collection.drop()`
 
 
 ### Menampilkan Document Collection
@@ -143,7 +142,8 @@ Sekarang bisa menampilkan data tersebut untuk memastikan bahwa data telah berhas
 ```bash
 > db.products.find({ status: true });
 ```
-Field `_id` secara default akan selalu tampil, kecuali jika mendefinisikannya sebagai field yang tidak tampil `({ _id: false})`.
+Field `_id` secara default akan selalu tampil, kecuali jika mendefinisikannya sebagai field yang tidak tampil
+`({ _id: false})`.
 
 Untuk menampilkan data hasil query dengan urutan tertentu, misalnya diurutkan berdasarkan stok tertinggi, maka cukup tambahkan method `sort()` dengan argumen berupa field yang jadi acuan sorting.
 ```bash
@@ -164,14 +164,14 @@ Untuk mengetahui jumlah data yang ada pada suatu collection, gunakan method `cou
 > db.products.count();
 ```
 
-##### Menggunakan operator
+#### Menggunakan Operator
 Misalnya untuk menampilkan produk dengan stok lebih dari tiga buah?
 Bisa dengan menggunakan karakter `&lt` (lebih kecil dari '<') dan `&gt` (lebih besar dari '>').
 ```bash
 > db.products.find({ stock: { $gt: 3 } });
 ```
 
-##### Menggunakan kriteria array
+#### Menggunakan Kriteria Array
  Misalnya ingin menampilkan data product dengan kriteria nama produknya monitor dan keyboard.
 ```bash
 > db.products.find({ name: { $in: ["Monitor", "Keyboard"] } });
