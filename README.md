@@ -1,6 +1,6 @@
+[![npm](https://nodei.co/npm/mongodb.png)](https://www.npmjs.com/package/mongodb)
 [![Build Status](https://github.com/Automattic/mongoose/workflows/Test/badge.svg)](https://github.com/mongodb/node-mongodb-native)
 [![NPM version](https://badge.fury.io/js/mongodb.svg)](http://badge.fury.io/js/mongodb)
-[![npm](https://nodei.co/npm/mongodb.png)](https://www.npmjs.com/package/mongodb)
 
 # 👨‍💻📚Learn MongoDB and operation using CLI
 
