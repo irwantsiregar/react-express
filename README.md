@@ -34,23 +34,15 @@ Bentuk data pada pada MongoDB, seperti berikut:
 ```
 
 #### Padanan istilah antara SQL database(RDMS) dengan MongoDB:
-`SQL`
-- database
-- table
-- row
-- column
-- index
-- table joins
-- primary key
-
-`DB MongoDB`
-- database
-- collection
-- document atau BSON document
-- field
-- index
-- $lookup, embedded documents
-- primary key
+| SQL | DB MongoDB |
+| ----- | ----- |
+| database | database |
+| table | collection |
+| row | document atau BSON document |
+| column | field |
+| index | index |
+| table joins | $lookup, embedded documents |
+| primary key | primary key |
 
 > **Note:** pada MongoDB, primary key otomatis diset sebagai field _id.
 
