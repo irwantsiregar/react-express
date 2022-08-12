@@ -48,9 +48,9 @@ npm install mongoose --save
 ```
 
 ## Getting Started Mongoose
-Pada mongoose terdapat beberapa komponen-komponen penyusunnya, yaitu schema, model dan query.
+Pada mongoose terdapat beberapa komponen-komponen penyusunnya, yaitu `schema`, `model` dan `query`.
 
-#### Mengenal Schema
+### Mengenal Schema
 Schema merepresentasikan struktur data pada suatu dokumen, terdiri dari field apa saja dan tipe datanya.
 ```js
 const jokesSchema = new mongoose.Schema({
@@ -94,7 +94,7 @@ const Student = mongoose.model('Student', productSchema);
 Student yang merupakan instance dari model adalah sebuah document.
 
 ### Mengenal Query
-Model pada mongoose menyediakan beberapa static helper(`fungsi`) yang berfungsi sebagai perintah
+Model pada mongoose menyediakan beberapa static helper(fungsi) yang berfungsi sebagai perintah
 query untuk melakukan operasi CRUD. Setiap fungsi ini akan mengembalikan sebuah objek query.
 
 Berikut beberapa contoh fungsi tersebut:
@@ -129,7 +129,7 @@ db.once('open', async () => {
   // disini perintah query
 })
 ```
-#### Query Menampilkan List data
+#### Query Menampilkan List Data
 Untuk menampilkan list data menggunakan method find().
 ```js
 // menampilkan list products
@@ -196,7 +196,7 @@ console.log(newStudent);
 // Result: { status: true, _id: 407f14e62ee716d58c675d73, __v: 0 } 
 ```
 
-#### Validasi Required
+##### Validasi Required
 Validasi tersebut bisa kita definisikan pada schema yaitu dengan menambahkan key required bernilai true.
 ```js
 const studentSchema = new mongoose.Schema({
@@ -222,7 +222,7 @@ try{
 }
 ```
 
-#### Validasi Min & Max
+##### Validasi Min & Max
 Selain itu untuk tipe string, kita juga memvalidasi panjang minimal atau maksimal karakter dengan
 menggunakan minLength dan maxLength.
 ```js 
@@ -243,7 +243,7 @@ discount: {
 },
 ```
 
-#### Validasi Enum
+##### Validasi Enum
 Validasi built-in lain yang bisa digunakan adalah validasi enum, yaitu membatasi hanya untuk data tertentu saja.
 Validasi ini cocok buat data pilihan. Apabila diisi dengan jenis minuman selain dari yg terdaftar tsb maka akan menampilkan error.
 ```js
@@ -254,7 +254,7 @@ drink: {
 },
 ```
 
-#### Validasi Unique
+##### Validasi Unique
 Unique sebenarnya bukan validasi namun merupakan helper untuk mendefinisikan bahwa field tersebut `unique`.
 Misalnya kita memiliki schema untuk collection users.
 
@@ -271,7 +271,7 @@ const User = mongoose.model('User', userSchema);
 ```
 > **Note:** `unique` disini tidak akan diterapkan apabila collection telah terdapat isi, oleh karena itu silakan di hapus terlebih dahulu collection yang akan diterapkan aturan unique. 
 
-#### Custom Validator
+##### Custom Validator
 Jika built-in validator tidak cukup, maka dapat juga untuk membuat validasi sendiri. 
 Sebagai contoh validasi email(wajib ada @), maka dapat digunakan regular expression: `/^\S+@\S+$/`.
 ```js
@@ -309,6 +309,7 @@ const query = await Student.find()
 query.where({ 'grade': { $gte : 70} })
 ```
 > **Note:** `$gt`(greater than '>'), `$lt`(lower than '<'), `$gte`(greater than equal '>='), dan `$lte`(lower than  '<=' ).
+
 Hal ini bisa dilakukan karena setiap method pada model tersebut juga akan mengembalikan query.
 Dapat juga menambahkan definisi query untuk menampilkan field tertentu yang ingin ditampilkan.
 ```js
@@ -328,4 +329,4 @@ const list_students = await Student.find();
 console.log(list_students);
 ```
 >**Note:** Untuk mengurutkan data dari yang terbesar hingga ke terkecil digunakan sort descending `-1`.
-> Untuk mengurutkan data dari yang terkecil hingga ke terbesar digunakan sort ascending `1`.
+>Untuk mengurutkan data dari yang terkecil hingga ke terbesar digunakan sort ascending `1`.
