@@ -1,3 +1,8 @@
+[![Build Status](https://github.com/Automattic/mongoose/workflows/Test/badge.svg)](https://github.com/Automattic/mongoose)
+[![NPM version](https://badge.fury.io/js/mongoose.svg)](http://badge.fury.io/js/mongoose)
+
+[![npm](https://nodei.co/npm/mongoose.png)](https://www.npmjs.com/package/mongoose)
+
 # 📚👨‍💻 Object Document Mapping (ODM)
 
 ## Berkenalan dengan ODM?
@@ -15,18 +20,13 @@ dengan langsung menggunakan database driver native.
 Pada database relasional, ODM ini dikenal sebagai ORM (Object Relational Mapping).
 
 ## Berkenalan dengan Mongoose
-[![Build Status](https://github.com/Automattic/mongoose/workflows/Test/badge.svg)](https://github.com/Automattic/mongoose)
-[![NPM version](https://badge.fury.io/js/mongoose.svg)](http://badge.fury.io/js/mongoose)
-
-[![npm](https://nodei.co/npm/mongoose.png)](https://www.npmjs.com/package/mongoose)
-
 Salah satu tools atau framework ODM berbasis NodeJS untuk database MongoDB yang cukup populer adalah `Mongoose`.
 
 [Mongoose](https://mongoosejs.com/) memiliki berbagai fitur seperti: modeling data berbasis skema, casting tipe data,
 validation, query building, hook untuk business logic, dsb.
 
 Berikut contoh penerapan kode pada mongoose:
-```bash
+```js
 // modeling document quotes
 const Jokes = mongoose.model('Jokes', { word: String });
 
@@ -39,9 +39,9 @@ const jokes = new Jokes({
 quote.save().then(() => console.log('jokes success added'));
 ```
 
-Selengkapnya kunjungi situs dokumentasi resmi [Mongoose](https://mongoosejs.com/docs/guide.html).
+Selengkapnya kunjungi situs dokumentasi resminya [Mongoose](https://mongoosejs.com/docs/guide.html).
 
-##### Installation Mongoose
+#### Installation Mongoose
 Pertama install terlebih dahulu [Node.js](https://nodejs.org/en/) dan [MongoDB](https://www.mongodb.com/try/download/community). 
 ```bash
 npm install mongoose --save
@@ -52,14 +52,14 @@ Pada mongoose terdapat beberapa komponen-komponen penyusunnya, yaitu schema, mod
 
 #### Mengenal Schema
 Schema merepresentasikan struktur data pada suatu dokumen, terdiri dari field apa saja dan tipe datanya.
-```bash
+```js
 const jokesSchema = new mongoose.Schema({
   word: String // String bentuk pendek dari {type: String}
 });
 ```
 
 Pada mongoose, Schema memungkinkan kita untuk mendefinisikan 'default value' dari suatu field.
-```bash
+```js
 const studentSchema = new mongoose.Schema({
   name: String,
   nim: Number,
@@ -88,7 +88,7 @@ Model bertanggung jawab untuk membuat dan membaca document dari database MongoDB
 Nama model biasanya ditulis dengan format PascalCase dan singular.
 
 Berikut contoh model untuk schema employee:
-```bash
+```js
 const Student = mongoose.model('Student', productSchema);
 ```
 Student yang merupakan instance dari model adalah sebuah document.
@@ -108,7 +108,7 @@ Berikut beberapa contoh fungsi tersebut:
 - Model.deleteMany()
 - Model.replaceOne()
 
-```bash
+```js
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/latihan');
 
@@ -131,14 +131,14 @@ db.once('open', async () => {
 ```
 #### Query Menampilkan List data
 Untuk menampilkan list data menggunakan method find().
-```bash
+```js
 // menampilkan list products
 await Product.find().exec((err, result)=>{
 console.log(result)
 })
 ```
 Atau dengan menggunakan metode `async/await`
-```bash
+```js
 const students = await Student.find();
 console.log(students);
 ```
@@ -146,7 +146,7 @@ console.log(students);
 #### Query Menampilkan Single Data
 Untuk menampilkan single data/ data tunggal, maka digunakan method `findOne()`.
 
-```bash
+```js
 // menampilkan single product
 const student = await Student.findOne({
 _id: '7f84c193zx432bfa8abgd234'
@@ -156,13 +156,13 @@ console.log(student)
 Perlu diketahui bahwa mongoose telah secara otomatis menjalankan fungsi `ObjectId()` pada field _id sehingga tidak perlu lagi memanggil secara manual fungsi tersebut.
 
 Penggunaan dalam bentuk lain yang lebih singkat, dapat menggunakan method `findById()`.
-```bash
+```js
 const student = await Student.findById('7f84c193zx432bfa8abgd234')
 ```
 
 #### Query Menambahkan Data Baru
 Untuk menambah data baru digunakan method `create()`
-```bash
+```js
 const newStudent = await Student.create({
   name: 'David Charles',
   nim: 16110243,
@@ -174,7 +174,7 @@ console.log(newStudent)
 
 #### Query Mengupdate Suatu Data
 Untuk mengupdate suatu data berdasarkan kriteria tertentu digunakan fungsi `updateOne()`.
-```bash
+```js
 // mengupdate data product
 await Student.updateOne({ _id: '7f84c193zx432bfa8abgd234' }, { name: 'David Mark' });
 ```
@@ -190,7 +190,7 @@ await Student.deleteOne( { _id: '7f84c193zx432bfa8abgd234' } );
 Salah satu kelebihan dari mongoose ini adalah kemudahan dalam menerapkan validasi pada data.
 
 Seperti query berikut:
-```bash
+```js
 const newStudent = await Student.create({})
 console.log(newStudent); 
 // Result: { status: true, _id: 407f14e62ee716d58c675d73, __v: 0 } 
@@ -198,7 +198,7 @@ console.log(newStudent);
 
 #### Validasi Required
 Validasi tersebut bisa kita definisikan pada schema yaitu dengan menambahkan key required bernilai true.
-```bash
+```js
 const studentSchema = new mongoose.Schema({
   name: { type: String, required: true },
   nim: { type: Number, required: true },
@@ -208,11 +208,11 @@ const studentSchema = new mongoose.Schema({
 ```
 
 Pada validasi diatas untuk pesan `error` juga dapat dilakukan custom.
-```bash
+```js
 name: { type: String, required: [true, 'Field name must exist.'] },
 ```
 Untuk mendapatkan spesifik error pada field tertentu, dapat digunakan perintah:
-```bash
+```js
 try{
   const newStudent = await Student.create({});
   console.log(newStudent);
@@ -225,7 +225,7 @@ try{
 #### Validasi Min & Max
 Selain itu untuk tipe string, kita juga memvalidasi panjang minimal atau maksimal karakter dengan
 menggunakan minLength dan maxLength.
-```bash 
+```js 
 name: {
   type: String,
   required: true,
@@ -234,7 +234,7 @@ name: {
 },
 ```
 Untuk field dengan type Number, dapat menggunakan key min dan max.
-```bash 
+```js 
 discount: {
   type: Number,
   required: true,
@@ -246,7 +246,7 @@ discount: {
 #### Validasi Enum
 Validasi built-in lain yang bisa digunakan adalah validasi enum, yaitu membatasi hanya untuk data tertentu saja.
 Validasi ini cocok buat data pilihan. Apabila diisi dengan jenis minuman selain dari yg terdaftar tsb maka akan menampilkan error.
-```bash
+```js
 drink: {
   type: String,
   required: true,
@@ -258,7 +258,7 @@ drink: {
 Unique sebenarnya bukan validasi namun merupakan helper untuk mendefinisikan bahwa field tersebut `unique`.
 Misalnya kita memiliki schema untuk collection users.
 
-```bash
+```js
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -274,7 +274,7 @@ const User = mongoose.model('User', userSchema);
 #### Custom Validator
 Jika built-in validator tidak cukup, maka dapat juga untuk membuat validasi sendiri. 
 Sebagai contoh validasi email(wajib ada @), maka dapat digunakan regular expression: `/^\S+@\S+$/`.
-```bash
+```js
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
@@ -299,26 +299,26 @@ Jika ditambahkan data user baru dengan email yang tidak valid, maka akan muncul 
 #### Query Builder
 Mongoose juga menyediakan query builder, yaitu fungsi-fungsi untuk menyusun sebuah query pada query select.
 Contoh query untuk menampilkan semua produk:
-```bash
+```js
 const query = await Student.find();
 ```
 Selain bisa didefinisikan langsung sebagai argumen pada method `find()`, Mongoose juga menyediakan method `where()` untuk mendefinisikan kriteria dari data.
 
-```bash
+```js
 const query = await Student.find()
 query.where({ 'grade': { $gte : 70} })
 ```
 > **Note:** `$gt`(greater than '>'), `$lt`(lower than '<'), `$gte`(greater than equal '>='), dan `$lte`(lower than  '<=' ).
 Hal ini bisa dilakukan karena setiap method pada model tersebut juga akan mengembalikan query.
 Dapat juga menambahkan definisi query untuk menampilkan field tertentu yang ingin ditampilkan.
-```bash
+```js
 query.select('name grade');
 ```
 > **Note:** Menggunakan spasi untuk memisahkan field.
 
 Kita juga dapat menggabungkannya dalam satu perintah, cara ini biasa disebut sebagai `chaining method`.
 Lengkapnya seperti kode berikut:
-```bash
+```js
 const list_students = await Student.find();
   .select('name nim')
   .where({ 'grade': { $gte : 70} })
