@@ -51,7 +51,7 @@ Bentuk data pada pada MongoDB, seperti berikut:
 > **Note:** pada MongoDB, primary key otomatis diset sebagai field _id.
 
 
-#### Download [MongoDB](https://www.mongodb.com/try/download/community)
+#### Download or Installation [MongoDB](https://www.mongodb.com/try/download/community)
 
 
 ### Menjalankan Query Pada MongoDB Shell
@@ -69,7 +69,9 @@ $ mongosh atau mongosh --quiet
 > **NOTE:** Parameter `--quiet` disini opsional, digunakan untuk hidden beberapa informasi tentang MongoDB.
 
 ```bash
-> show databases; atau show dbs;
+> show databases; 
+  atau
+> show dbs;
 ```
 Secara default terdapat tiga database bawaan MongoDB yaitu `admin, config dan local`.
 
@@ -107,13 +109,13 @@ quotes
 > - Untuk menghapus collection berserta isi dokumennya gunakan perintah: `db.collection.drop()`
 
 
-### Menampilkan Dokumen Collection
+### Menampilkan Document Collection
 Untuk menampilkan data dokumen yang tersimpan dalam suatu collection. gunakan perintah:
 ```bash
 > db.getCollection("quotes").find();
 ```
 
-### Membuat Skema Data Pada Collection
+### Membuat Schema Data for Collection
 Menggunakan MongoDB tidak perlu membuat skema data ketika ingin membuat/menambahkan dokumen pada collection.
 Cukup langsung insert data, maka MongoDB akan mendeteksi tipe datanya.
 ```bash
@@ -131,7 +133,7 @@ Sekarang bisa menampilkan data tersebut untuk memastikan bahwa data telah berhas
 > db.products.find().pretty();
 ```
 
-### Menampilkan Dokumen Tertentu Pada Collection
+### Menampilkan Document Tertentu Pada Collection
  Misalnya kita ingin menampilkan data product yang statusnya true saja, gunakan perintah:
 ```bash
 > db.products.find({ status: true });
@@ -157,20 +159,20 @@ Untuk mengetahui jumlah data yang ada pada suatu collection, gunakan method `cou
 > db.products.count();
 ```
 
-- Menggunakan operator?
+##### Menggunakan operator
 Misalnya untuk menampilkan produk dengan stok lebih dari tiga buah?
 Bisa dengan menggunakan karakter `&lt` (lebih kecil dari '<') dan `&gt` (lebih besar dari '>').
 ```bash
 > db.products.find({ stock: { $gt: 3 } });
 ```
 
-- Menggunakan kriteria array
+##### Menggunakan kriteria array
  Misalnya ingin menampilkan data product dengan kriteria nama produknya monitor dan keyboard.
 ```bash
 > db.products.find({ name: { $in: ["Monitor", "Keyboard"] } });
 ```
 
-### Mengupdate Dokumen Tertentu Pada Collection
+### Mengupdate Document Tertentu Pada Collection
 MongoDB memiliki method untuk mengupdate dokumen pada collection, yaitu:
 `db.collection.updateOne(, , ) dan db.collection.updateMany(, , )`
 
@@ -193,7 +195,7 @@ Untuk mengupdate lebih dari satu atau banyak data yang sesuai dengan kriteria te
   ]);
 ```
 
-### Menghapus Dokumen Tertentu Pada Collection
+### Menghapus Document Tertentu Pada Collection
 MongoDB memiliki method untuk menghapus dokumen pada collection, yaitu:
 ```bash
 db.collection.deleteOne(); dan db.collection.deleteMany();
@@ -222,7 +224,7 @@ Hak akses pada MongoDB dapat kita set untuk semua database atau untuk database t
 - dbAdmin => hak akses yang lebih tinggi dari readWrite mencakup tugas-tugas administrasi seperti perubahan skema, indexing, statistik
 - userAdmin => hak akses terkait manajemen role pada database
 - dbOwner => hak aksesnya kombinasi antara dbAdmin dan userAdmin
-- readAnyDatabase =>sama seperti read tapi untuk semua database
+- readAnyDatabase => sama seperti read tapi untuk semua database
 - readWriteAnyDatabase => sama seperti readWrite tapi untuk semua database
 - userAdminAnyDatabase => sama seperti userAdmin tapi untuk semua database
 - dbAdminAnyDatabase => sama seperti dbAdmin tapi untuk semua database
@@ -231,16 +233,16 @@ Hak akses pada MongoDB dapat kita set untuk semua database atau untuk database t
 Selengkapnya terdapat pada halaman web [Docs MongoDB](https://docs.mongodb.com/manual/reference/built-in-roles/)
 
 
-### Membuat User 
+### Membuat Users
 User merupakan pengguna dari database yang memiliki role tertentu sesuai dengan yang diberikan
-kepadanya. Semua informasi tentang user disimpan oleh MongoDB dalam database admin atau  tepatnya pada collection system.users
+kepadanya. Semua informasi tentang user disimpan oleh MongoDB dalam database admin atau  tepatnya pada collection `system.users`.
 
-Untuk melihat user yang tersedia, pada mongo shell gunakan perintah:
+Untuk melihat users yang tersedia, pada mongo shell gunakan perintah:
 ```bash
 > use admin
   db.system.users.find()
   ```
-Secara Default akan menampilkan 'tidak ada user' (kosong).
+Secara Default akan menampilkan 'tidak ada user' atau kosong.
 
 Untuk dapat membuat user baru. 
 Misalnya ingin membuat user dengan role readWrite pada database latihan maka gunakan perintah:
