@@ -1,3 +1,9 @@
+[![Build Status](https://github.com/Automattic/mongodb/workflows/Test/badge.svg)](https://github.com/mongodb/node-mongodb-native)
+
+[![NPM version](https://badge.fury.io/js/mongodb.svg)](http://badge.fury.io/js/mongodb)
+
+[![npm](https://nodei.co/npm/mongodb.png)](https://www.npmjs.com/package/mongodb)
+
 # 👨‍💻📚Learn MongoDB and operation using CLI
 
 ## Apa itu NoSQL Database?
@@ -106,7 +112,7 @@ Untuk menampilkan semua collection pada current database, gunakan perintah:
 quotes
 ```
 > **Note:** - Bisa juga membuat sebuah collection kosong melalui perintah: `db.createCollection("quotes")`
-> - Untuk menghapus collection berserta isi dokumennya gunakan perintah: `db.collection.drop()`
+>Untuk menghapus collection berserta isi dokumennya gunakan perintah: `db.collection.drop()`
 
 
 ### Menampilkan Document Collection
