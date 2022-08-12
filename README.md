@@ -3,13 +3,13 @@
 ## Apa itu NoSQL Database?
 [NoSQL](https://en.wikipedia.org/wiki/MongoDB) ("non-SQL" or "non-relational or Not only SQL") merupakan database yang menyediakan mekanisme penyimpanan dan pembacaan data melalui model non tabular yaitu document, key-value, dan graph.
 
-## Jenis-Jenis NoSQL Database:
+### Jenis-Jenis NoSQL Database:
 - document database
 - key-value database
 - wide-column database
-- graph database.
+- graph database
 
-Untuk mengetahui DBMS yang diurutkan berdasarkan popularitasnya dapat mengunjungi web [DBEngines](https://db-engines.com/en/ranking).
+Untuk mengetahui DBMS yang diurutkan berdasarkan popularitasnya dapat mengunjungi halamn web [DBEngines](https://db-engines.com/en/ranking).
 
 MongoDB merupakan database dengan menggunakan model document base, yang menyimpan datanya dalam bentuk dokumen yang mirip dengan JSON.
 
@@ -30,17 +30,27 @@ Bentuk data pada pada MongoDB, seperti berikut:
 ```
 
 ### Padanan istilah antara SQL database(RDMS) dengan MongoDB:
-  `SQL`		  `DB MongoDB`
-- database	- database
-- table		- collection
-- row		- document atau BSON document
-- column	- field
-- index		- index
-- table joins	- $lookup, embedded documents
-- primary key	- primary key
+`SQL`
+- database
+- table
+- row
+- column
+- index
+- table joins
+- primary key
+
+`DB MongoDB`
+- database
+- collection
+- document atau BSON document
+- field
+- index
+- $lookup, embedded documents
+- primary key
+
 > **Note:** pada MongoDB, primary key otomatis diset sebagai field _id.
 
-Download [MongoDB](https://www.mongodb.com/try/download/community)
+#### Download [MongoDB](https://www.mongodb.com/try/download/community)
 
 ### Menjalankan Query Pada MongoDB Shell
 Ketika sudah menginstalasi mongoDB maka secara otomatis telah terinstalasi juga tools mongoDB Shell.
@@ -124,7 +134,7 @@ Sekarang bisa menampilkan data tersebut untuk memastikan bahwa data telah berhas
 ```bash
 > db.products.find({ status: true });
 ```
-Field _id secara default akan selalu tampil, kecuali jika mendefinisikannya sebagai field yang tidak tampil `({ _id: false})`.
+Field `_id` secara default akan selalu tampil, kecuali jika mendefinisikannya sebagai field yang tidak tampil `({ _id: false})`.
 
 Untuk menampilkan data hasil query dengan urutan tertentu, misalnya diurutkan berdasarkan stok tertinggi, maka cukup tambahkan method `sort()` dengan argumen berupa field yang jadi acuan sorting.
 ```bash
@@ -147,7 +157,7 @@ Untuk mengetahui jumlah data yang ada pada suatu collection, gunakan method `cou
 
 - Menggunakan operator?
 Misalnya untuk menampilkan produk dengan stok lebih dari tiga buah?
-Bisa dengan menggunakan karakter &lt (lebih kecil dari '<') dan &gt (lebih besar dari '>').
+Bisa dengan menggunakan karakter `&lt` (lebih kecil dari '<') dan `&gt` (lebih besar dari '>').
 ```bash
 > db.products.find({ stock: { $gt: 3 } });
 ```
@@ -160,9 +170,8 @@ Bisa dengan menggunakan karakter &lt (lebih kecil dari '<') dan &gt (lebih besar
 
 ### Mengupdate Dokumen Tertentu Pada Collection
 MongoDB memiliki method untuk mengupdate dokumen pada collection, yaitu:
-```bash
-db.collection.updateOne(, , ); dan db.collection.updateMany(, , );
-```
+`db.collection.updateOne(, , ) dan db.collection.updateMany(, , )`
+
 Misalnya untuk mengupdate data status pada collection products yaitu mengubah status dari produk keyboard menjadi true, gunakan perintah:
 ```bash
 > db.products.updateOne( { name: "Keyboard" }, { $set: { status: true } });
@@ -182,7 +191,7 @@ Untuk mengupdate lebih dari satu atau banyak data yang sesuai dengan kriteria te
   ]);
 ```
 
-### Menghapus Dokumen Tertentu Pada Collection ~4
+### Menghapus Dokumen Tertentu Pada Collection
 MongoDB memiliki method untuk menghapus dokumen pada collection, yaitu:
 ```bash
 db.collection.deleteOne(); dan db.collection.deleteMany();
@@ -201,27 +210,23 @@ Untuk menghapus lebih dari satu atau banyak data sekaligus sesuai berdasarkan kr
 ### Authentication
 MongoDB tentunya juga mendukung authentication yaitu mekanisme keamanan untuk membatasi hak akses terhadap suatu database.
 
-Untuk mengaktifkan authentication, maka perlu menambahkan parameter --auth ketika menjalankan server mongoDB mongod --auth. Atau jika kita menjalankan mongod menggunakan file konfigurasi maka tambahkan syntaks:
-```bash
-  security:
-	   authorization: enabled
-```
+Untuk mengaktifkan authentication, maka perlu menambahkan parameter --auth ketika menjalankan server mongoDB mongod --auth. Atau jika kita menjalankan mongod menggunakan file konfigurasi maka tambahkan `security: authorization: enabled`.
 
 ### Role MongoDB
 User pada database MongoDB menyediakan role-role tertentu sesuai dengan hak aksesnya untuk melakukan suatu action atau query tertentu pada database.
 Hak akses pada MongoDB dapat kita set untuk semua database atau untuk database tertentu saja.
-	- read (hak akses yang hanya membaca database)
-	- readWrite (hak akses yang dapat membaca dan menulis pada database)
-	- dbAdmin (hak akses yang lebih tinggi dari readWrite mencakup tugas-tugas administrasi seperti
-	  perubahan skema, indexing, statistik)
-	- userAdmin (hak akses terkait manajemen role pada database)
-	- dbOwner (hak aksesnya kombinasi antara dbAdmin dan userAdmin)
-	- readAnyDatabase (sama seperti read tapi untuk semua database)
-	- readWriteAnyDatabase (sama seperti readWrite tapi untuk semua database)
-	- userAdminAnyDatabase (sama seperti userAdmin tapi untuk semua database)
-	- dbAdminAnyDatabase (sama seperti dbAdmin tapi untuk semua database)
-	- root (hak akses tertinggi, bisa melakukan apapun pada suatu database atau semua database tergantung bagaimana settingnya).
-Selengkapnya lebih lengkap terdapat pada [Docs MongoDB](https://docs.mongodb.com/manual/reference/built-in-roles/)
+- read (hak akses yang hanya membaca database)
+- readWrite (hak akses yang dapat membaca dan menulis pada database)
+- dbAdmin (hak akses yang lebih tinggi dari readWrite mencakup tugas-tugas administrasi seperti perubahan skema, indexing, statistik)
+- userAdmin (hak akses terkait manajemen role pada database)
+- dbOwner (hak aksesnya kombinasi antara dbAdmin dan userAdmin)
+- readAnyDatabase (sama seperti read tapi untuk semua database)
+- readWriteAnyDatabase (sama seperti readWrite tapi untuk semua database)
+- userAdminAnyDatabase (sama seperti userAdmin tapi untuk semua database)
+- dbAdminAnyDatabase (sama seperti dbAdmin tapi untuk semua database)
+- root (hak akses tertinggi, bisa melakukan apapun pada suatu database atau semua database tergantung bagaimana settingnya).
+
+Selengkapnya terdapat pada halaman web [Docs MongoDB](https://docs.mongodb.com/manual/reference/built-in-roles/)
 
 
 ### Membuat User 
@@ -233,7 +238,7 @@ Untuk melihat user yang tersedia, pada mongo shell gunakan perintah:
 > use admin
   db.system.users.find()
   ```
-Secara Default akan menampilkan tidak ada user(kosong).
+Secara Default akan menampilkan 'tidak ada user' (kosong).
 
 Untuk dapat membuat user baru. 
 Misalnya ingin membuat user dengan role readWrite pada database latihan maka gunakan perintah:
@@ -268,10 +273,10 @@ Untuk membuat user dengan role root, gunakan perintah:
 
 Penjelasannya adalah user dengan username `root` memiliki role root pada semua database.
 Setelah membuat user baru maka harus merestart server mongoDB dan pastikan authentication diaktifkan yaitu dengan menambahkan parameter `--auth` ketika menjalankan server mongoDB atau menambahkan `security.authorization` jika menggunakan konfigurasi:
-Buka file konfigurasi, kemudian tambahkan syntaks:
+Buka file konfigurasi, kemudian tambahkan syntaks berikut:
 ```bash
-  security:
-	    authorization: enabled
+ security:
+   authorization: enabled
 ```
 > **Note:** Untuk windows, lokasi file konfigurasi adalah `<install directory>\bin\mongod.cfg`
 
