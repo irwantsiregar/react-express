@@ -1,4 +1,4 @@
-[![Build Status](https://github.com/Automattic/mongodb/workflows/Test/badge.svg)](https://github.com/mongodb/node-mongodb-native)
+[![Build Status](https://github.com/Automattic/mongoose/workflows/Test/badge.svg)](https://github.com/mongodb/node-mongodb-native)
 
 [![NPM version](https://badge.fury.io/js/mongodb.svg)](http://badge.fury.io/js/mongodb)
 
