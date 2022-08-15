@@ -3,7 +3,7 @@
 ## Case Study Foodstore Server | Products
 
 ## API Endpoint
-| Entitas | Method | Route | Description |
+| Entity | Method | Route | Description |
 | ------- |------- | ----- | ----------- |
 | Product | GET    | /products | Get list Products | 
 |         | POST   | /products | Create a new Product |
