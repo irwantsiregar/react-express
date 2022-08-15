@@ -1,6 +1,6 @@
-# 📚👨‍💻Build API Foodstore with framework Express JS
-
-## Case Study Express | Products
+# 📚👨‍💻Build API with framework Express JS
+`MongoDB` `Express` `NodeJS`
+## Case Study Foodstore Server | Products
 
 ## API Endpoint
 | Entitas | Method | Route | Description |
@@ -18,7 +18,7 @@
 
 
 
-### Prepare Environment and Intial Configuration
+### Prepare Environment and Initial Configuration
 ```bash
 $ npm install -g express-generator
 ```
@@ -32,7 +32,7 @@ Change directory. Ex: /Desktop/development/
 $ cd /Desktop/development 
 ```
 
-Generate New Aplications wirh syntaks:
+Generate New Application with syntax:
 ```bash
 $ express --view=pug foodstore-server
 ```
