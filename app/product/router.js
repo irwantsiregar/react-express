@@ -6,6 +6,6 @@ const productController = require('./controller');
 router.get('/products', productController.index);
 router.post('/products', multer({ dest: os.tmpdir() }).single('image'), productController.store);
 router.put('/products/:id', multer({ dest: os.tmpdir() }).single('image'), productController.update);
-router.get('/products/:id', productController.destroy);
+router.delete('/products/:id', productController.destroy);
 
 module.exports = router;
