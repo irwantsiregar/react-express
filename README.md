@@ -1,6 +1,6 @@
 # Build API Foodstore with framework Express JS
 
-## Study Cases Express | Products
+## Case Study Express | Products
 
 ## API Endpoint
 | Entitas | Method | Route | Description |
@@ -18,7 +18,7 @@
 
 
 
-### Prepare Environment and Configuration begin
+### Prepare Environment and Intial Configuration
 ```bash
 $ npm install -g express-generator
 ```
