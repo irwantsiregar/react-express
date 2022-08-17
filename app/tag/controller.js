@@ -35,6 +35,15 @@ async function update(req, res, next) {
   }
 }
 
+async function index(req, res, next) {
+  try {
+    let tags = await Tag.find();
+    return res.json(tags);
+  } catch (error) {
+    next(error);
+  }
+}
+
 async function destroy(req, res, next) {
   try {
     let tag = await Tag.findOneAndDelete({ _id: req.params.id });
@@ -44,4 +53,4 @@ async function destroy(req, res, next) {
   }
 }
 
-module.exports = { store, update, destroy };
+module.exports = { store, update, index, destroy };
