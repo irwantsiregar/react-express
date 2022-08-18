@@ -1,9 +1,9 @@
-# 📚👨‍💻Build RESTful API using framework Express.js
+# 📚👨‍💻Build RESTful API Using Framework Express.js
 `MongoDB` `Express` `NodeJS`
 ## Case Study foodstore-server | Products
 
 ## API Endpoint
-path`/api/`
+- path`/api/`
 | Entity | Method | Route | Description |
 | ------- |------- | ----- | ----------- |
 | Product | GET    | /products | Get list Products | 
@@ -18,7 +18,7 @@ path`/api/`
 |         | PUT    | /tags/:id | Update Category by parameters id |
 |         | DELETE | /tags/:id | Delete Category by parameters id |
 
-path`/auth/`
+- path`/auth/`
 | Entity | Method | Route | Description |
 | ------- |------- | ----- | ----------- |
 | User | POST    | /register | Create a new user | 
@@ -44,7 +44,8 @@ Generate New Application with syntax:
 $ express --view=pug foodstore-server
 ```
 
-##### Other additional packages:
+
+#### Other additional packages:
 
 NodeJS-based ODM (Object Data Mapping) tools or framework for MongoDB databases.
 ```bash
@@ -83,20 +84,23 @@ $ npm install passport passport-local --save
 
 ---
 
-Kode berikut befungsi untuk kita melakukan pemilihan terhadap field apa saja yang akan dikembalikan dari data di MongoDB.
+
+Kode berikut befungsi untuk kita melakukan pemilihan terhadap field apa saja yang akan dikembalikan dari data di MongoDB
 ```js
 let user = await User.findOne({email}).select('-__v -createdAt -updatedAt -cart_items -token');
 ```
-Artinya kita pilih semua atribut pada User kecuali atribut-atribut yang kita tulis dengan awalan tanda minus `-` 
+Artinya kita pilih semua atribut pada User kecuali atribut-atribut yang kita tulis dengan awalan tanda minus '-'. 
 
-Kode Category.findOne kita gunakan untuk mencari data ke _collection Category.
+
+Kode Category.findOne kita gunakan untuk mencari data ke _collection Category
 ```js
 let category = await Category.findOne({name: {$regex: payload.category, $options: 'i' }})
 ```
 Kriterianya adalah field name kemudian menggunakan `$regex` dengan `$options` bernilai `i` untuk
 incasesensitive atau tidak sensitif case, misalnya "food" atau "Food" akan dianggap sama saja.
 
-Menggunakan find untuk mencari satu atau lebih tag berbeda dengan findOne yang hanya mencari satu data.
+
+Menggunakan find untuk mencari satu atau lebih tag berbeda dengan findOne yang hanya mencari satu data
 ```js
 let tags = await Tag.find({name: {$in: payload.tags}});
 ```

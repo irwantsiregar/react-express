@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const User = require('../user/model');
 const config = require('../config');
+const { getToken } = require('../utils/get-token')
 
 async function register(req, res, next) {
   try {
@@ -62,4 +63,21 @@ function me(req, res, next) {
   return res.json(req.user);
 }
 
-module.exports = { register, localStrategy, login, me };
+async function logout(req, res, next) {
+  let token = getToken(req);
+  let user = await User.findOneAndUpdate({ token: { $in: [token] } }, { $pull: { token } }, { useFindAndModify: false });
+  // check user or token
+  if (!user || !token) {
+    return res.json({
+      error: 1,
+      message: 'User not found!'
+    });
+  }
+  // --- logout success ---//
+  return res.json({
+    error: 0,
+    message: 'Logout successfully'
+  });
+}
+
+module.exports = { register, localStrategy, login, me, logout };
