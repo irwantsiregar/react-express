@@ -14,10 +14,8 @@ async function store(req, res, next) {
       category ? payload = { ...payload, category: category._id } : delete payload.category;
     }
 
-    console.log(payload.tags)
     if (payload.tags && payload.tags.length) {
       let tags = await Tag.find({ name: { $in: payload.tags } });
-      console.log(tags)
       if (tags.length) {
         payload = { ...payload, tags: tags.map(tag => tag._id) }
       }
