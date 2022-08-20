@@ -8,7 +8,6 @@ const { policyFor } = require('../policy');
 
 async function store(req, res, next) {
   try {
-    // console.log(req.user);
     //--- cek policy ---/
     let policy = policyFor(req.user);
 
@@ -113,7 +112,6 @@ async function index(req, res, next) {
     next(error);
   }
 }
-
 
 async function update(req, res, next) {
   try {

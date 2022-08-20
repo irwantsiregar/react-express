@@ -3,7 +3,7 @@
 ## Case Study foodstore-server | Products
 
 ## API Endpoint
-- path`/api/`
+> path`/api/`
 | Entity | Method | Route | Description |
 | ------- |------- | ----- | ----------- |
 | Product | GET    | /products | Get list Products | 
@@ -17,8 +17,16 @@
 |         | POST   | /tags | Create a new Category |
 |         | PUT    | /tags/:id | Update Category by parameters id |
 |         | DELETE | /tags/:id | Delete Category by parameters id |
+| Region | GET | /wilayah/provinsi | Get list districts | 
+|       | GET | /wilayah/kabupaten | Get list provincies | 
+|       | GET | /wilayah/kecamatan | Get list regencies | 
+|       | GET | /wilayah/desa | Get list villages | 
+| DeliveryAddress | GET    | /delivery-addresses | Get list Delivery-Address | 
+|         | POST   | /delivery-addresses | Create a new Delivery-Address |
+|         | PUT    | /delivery-addresses/:id | Update Delivery-Address by parameters id |
+|         | DELETE | /delivery-addresses/:id | Delete Delivery-Address by parameters id |
 
-- path`/auth/`
+> path`/auth/`
 | Entity | Method | Route | Description |
 | ------- |------- | ----- | ----------- |
 | User | POST    | /register | Create a new user | 
@@ -81,6 +89,16 @@ $ npm install jsonwebtoken --save
 Local strategy: we define our own strategy to login in the app
 ```bash
 $ npm install passport passport-local --save
+```
+
+RBAC (Role Based Access Control): each role in the application can be assigned a rule to be able to perform any action (ex: CRUD) against any resource (User, Product)
+```bash
+$ npm install @casl/ability --save
+```
+
+Functions to read CSV format files while converting them to JSON
+```bash
+$ npm install csvtojson --save
 ```
 
 ---
