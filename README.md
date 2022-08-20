@@ -24,6 +24,7 @@
 | User | POST    | /register | Create a new user | 
 |      | POST    | /login | Login for user | 
 |      | GET    | /me | Get user information which login | 
+|      | POST    | /logout | Logout for user | 
 
 ### Prepare Environment and Initial Configuration
 ```bash

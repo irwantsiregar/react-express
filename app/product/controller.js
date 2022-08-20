@@ -4,9 +4,21 @@ const Product = require('./model');
 const Category = require('../category/model');
 const Tag = require('../tag/model');
 const config = require('../config');
+const { policyFor } = require('../policy');
 
 async function store(req, res, next) {
   try {
+    // console.log(req.user);
+    //--- cek policy ---/
+    let policy = policyFor(req.user);
+
+    if (!policy.can('create', 'Product')) {
+      return res.json({
+        error: 1,
+        message: `Anda tidak memiliki akses untuk membuat produk`
+      });
+    }
+
     let payload = req.body;
 
     if (payload.category) {
@@ -93,9 +105,10 @@ async function index(req, res, next) {
       }
     }
 
+    let count = await Product.find(criteria).countDocuments();
     let products = await Product.find(criteria).limit(parseInt(limit)).skip(parseInt(skip))
       .populate('category').populate('tags');
-    return res.json(products);
+    return res.json({ data: products, count });
   } catch (error) {
     next(error);
   }
@@ -104,6 +117,15 @@ async function index(req, res, next) {
 
 async function update(req, res, next) {
   try {
+    //--- cek policy ---/
+    let policy = policyFor(req.user);
+    if (!policy.can('update', 'Product')) {
+      return res.json({
+        error: 1,
+        message: `Anda tidak memiliki akses untuk mengupdate produk`
+      });
+    }
+
     let payload = req.body;
 
     if (payload.category) {
@@ -171,6 +193,15 @@ async function update(req, res, next) {
 
 async function destroy(req, res, next) {
   try {
+    //--- cek policy ---/
+    let policy = policyFor(req.user);
+    if (!policy.can('delete', 'Product')) { // <-- can delete
+      return res.json({
+        error: 1,
+        message: `Anda tidak memiliki akses untuk menghapus produk`
+      });
+    }
+
     let product = await Product.findOneAndDelete({ _id: req.params.id });
     let currentImage = `${config.rootPath}/public/upload/${product.image_url}`;
     if (fs.existsSync(currentImage)) {

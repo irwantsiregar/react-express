@@ -30,6 +30,7 @@ app.use('/api', categoryRouter);
 app.use('/api', tagRouter);
 app.use('/auth', authRouter);
 app.use(decodeToken());
+console.log(decodeToken());
 /* ---------------------------------- */
 
 // catch 404 and forward to error handler
