@@ -5,6 +5,10 @@ const policies = {
     can('read', 'Product');
   },
   user(user, { can }) {
+    // membuat, ubah, hapus `Product`
+    can('create', 'Product');
+    can('update', 'Product');
+    can('delete', 'Product');
     // membuat `Order`
     can('create', 'Order');
     // membaca daftar `Order`

@@ -6,11 +6,10 @@ const User = require('../user/model');
 function decodeToken() {
   return async function (req, res, next) {
     try {
-      console.log(req);
       let token = getToken(req);
       if (!token) return next();
       req.user = jwt.verify(token, config.secretKey);
-      console.log(req.user);
+      // console.log(req.user);
       let user = await User.findOne({ token: { $in: [token] } });
       //-- token expired jika User tidak ditemukan --//
       if (!user) {

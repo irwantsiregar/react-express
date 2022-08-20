@@ -4,13 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
-// import product router
+// import all router and middleware
 const productRouter = require('./app/product/router');
 const categoryRouter = require('./app/category/router');
 const tagRouter = require('./app/tag/router');
 const authRouter = require('./app/auth/router');
-const wilayahRouter = require('./app/wilayah/router');
+const wilayahRouter = require('./app/region/router');
 const deliveryRouter = require('./app/delivery-address/router');
+const cartRouter = require('/app/cart/router');
 const { decodeToken } = require('./app/auth/middleware');
 
 var app = express();
@@ -25,16 +26,16 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Using product router
+// Using all router(features)
 /* ---------------------------------- */
-app.use('/auth', authRouter);
 app.use(decodeToken());
-console.log(decodeToken());
+app.use('/auth', authRouter);
 app.use('/api', productRouter);
 app.use('/api', categoryRouter);
 app.use('/api', tagRouter);
 app.use('/api', wilayahRouter);
 app.use('/api', deliveryRouter);
+app.use('/api', cartRouter);
 /* ---------------------------------- */
 
 // catch 404 and forward to error handler

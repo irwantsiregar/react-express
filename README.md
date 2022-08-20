@@ -25,6 +25,8 @@
 |         | POST   | /delivery-addresses | Create a new Delivery-Address |
 |         | PUT    | /delivery-addresses/:id | Update Delivery-Address by parameters id |
 |         | DELETE | /delivery-addresses/:id | Delete Delivery-Address by parameters id |
+| CartItem | GET    | /carts | Get list product in cart | 
+|         | PUT    | /carts | Update or save products to on cart |
 
  path`/auth/`
 | Entity | Method | Route | Description |
@@ -52,7 +54,7 @@ Generate New Application with syntax:
 ```bash
 $ express --view=pug foodstore-server
 ```
-
+---
 
 #### Other additional packages:
 

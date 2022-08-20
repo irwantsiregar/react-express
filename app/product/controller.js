@@ -10,7 +10,7 @@ async function store(req, res, next) {
   try {
     //--- cek policy ---/
     let policy = policyFor(req.user);
-
+    console.log(req.user);
     if (!policy.can('create', 'Product')) {
       return res.json({
         error: 1,
