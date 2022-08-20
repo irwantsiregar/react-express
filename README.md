@@ -3,7 +3,7 @@
 ## Case Study foodstore-server | Products
 
 ## API Endpoint
-> path`/api/`
+ path`/api/`
 | Entity | Method | Route | Description |
 | ------- |------- | ----- | ----------- |
 | Product | GET    | /products | Get list Products | 
@@ -26,7 +26,7 @@
 |         | PUT    | /delivery-addresses/:id | Update Delivery-Address by parameters id |
 |         | DELETE | /delivery-addresses/:id | Delete Delivery-Address by parameters id |
 
-> path`/auth/`
+ path`/auth/`
 | Entity | Method | Route | Description |
 | ------- |------- | ----- | ----------- |
 | User | POST    | /register | Create a new user | 
