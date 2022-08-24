@@ -6,13 +6,14 @@ var logger = require('morgan');
 
 // import all router and middleware
 const productRouter = require('./app/product/router');
+const { decodeToken } = require('./app/auth/middleware');
 const categoryRouter = require('./app/category/router');
 const tagRouter = require('./app/tag/router');
 const authRouter = require('./app/auth/router');
 const wilayahRouter = require('./app/region/router');
 const deliveryRouter = require('./app/delivery-address/router');
-const cartRouter = require('/app/cart/router');
-const { decodeToken } = require('./app/auth/middleware');
+const cartRouter = require('./app/cart/router');
+const orderRouter = require('./app/order/router');
 
 var app = express();
 
@@ -36,6 +37,7 @@ app.use('/api', tagRouter);
 app.use('/api', wilayahRouter);
 app.use('/api', deliveryRouter);
 app.use('/api', cartRouter);
+app.use('/api', orderRouter);
 /* ---------------------------------- */
 
 // catch 404 and forward to error handler

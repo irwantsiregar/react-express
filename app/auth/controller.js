@@ -53,7 +53,6 @@ async function login(req, res, next) {
 }
 
 function me(req, res, next) {
-  console.log(req.user);
   if (!req.user) {
     return res.json({
       error: 1,
@@ -67,7 +66,7 @@ async function logout(req, res, next) {
   let token = getToken(req);
   let user = await User.findOneAndUpdate({ token: { $in: [token] } }, { $pull: { token } }, { useFindAndModify: false });
   // check user or token
-  if (!user || !token) { 
+  if (!user || !token) {
     return res.json({
       error: 1,
       message: 'User not found!'
