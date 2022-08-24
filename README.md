@@ -27,6 +27,9 @@
 |         | DELETE | /delivery-addresses/:id | Delete Delivery-Address by parameters id |
 | CartItem | GET    | /carts | Get list product in cart | 
 |         | PUT    | /carts | Update or save products to on cart |
+| Order | GET    | /orders | Get all order have a user | 
+|         | POST | /orders | Create a new order by user |
+| Invoice | GET    | /invoices/:order_id | Get invoice by id have a user | 
 
  path`/auth/`
 | Entity | Method | Route | Description |
@@ -101,6 +104,11 @@ $ npm install @casl/ability --save
 Functions to read CSV format files while converting them to JSON
 ```bash
 $ npm install csvtojson --save
+```
+
+To avoid CORS (Cross Origin Resource Sharing)
+```bash
+$ npm install cors --save
 ```
 
 ---
