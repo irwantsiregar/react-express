@@ -4,6 +4,6 @@ export function userLogin(user, token) {
   return { type: USER_LOGIN, user, token }
 }
 
-export function userLogin() {
+export function userLogout() {
   return { type: USER_LOGOUT }
 }

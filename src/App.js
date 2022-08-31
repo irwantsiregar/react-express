@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import { listen } from './app/listener';
 import Register from './pages/Register/index';
 import RegisterSuccess from './pages/RegisterSuccess/index';
+import Login from './pages/Login';
 
 function App() {
   React.useEffect(() => { listen() }, []);
@@ -19,6 +20,9 @@ function App() {
             <RegisterSuccess />
           </Route>
           <Route path="/register" component={Register} />
+          <Route path="/login">
+            <Login />
+          </Route>
           <Route path="/" component={Home} />
         </Switch>
       </Router>
