@@ -1,5 +1,5 @@
 import * as React from 'react';
-// import { arrayOf, string, shape, oneOfType, number, func } from 'proptypes';
+import { arrayOf, string, shape, oneOfType, number, func } from 'prop-types';
 import { CardItem, Button, Text } from 'upkit';
 import FaArrowRight from '@meronex/icons/fa/FaArrowRight';
 import FaCartPlus from '@meronex/icons/fa/FaCartPlus';
@@ -45,13 +45,13 @@ export default function Cart({ items, onItemInc, onItemDec, onCheckout }) {
   )
 }
 
-// Cart.propTypes = {
-//   items: arrayOf(shape({
-//     _id: string.isRequired,
-//     name: string.isRequired,
-//     qty: oneOfType([string, number]).isRequired,
-//   })),
-//   onItemInc: func,
-//   onItemDec: func,
-// onCheckout: func,
-// }
+Cart.propTypes = {
+  items: arrayOf(shape({
+    _id: string.isRequired,
+    name: string.isRequired,
+    qty: oneOfType([string, number]).isRequired,
+  })),
+  onItemInc: func,
+  onItemDec: func,
+  onCheckout: func,
+}

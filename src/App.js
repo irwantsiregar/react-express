@@ -9,6 +9,8 @@ import { getCart } from './api/cart';
 import Register from './pages/Register/index';
 import RegisterSuccess from './pages/RegisterSuccess/index';
 import Login from './pages/Login';
+import UserAddressAdd from './pages/UserAddressAdd';
+import UserAddress from './pages/UserAddress';
 
 function App() {
   React.useEffect(() => {
@@ -26,6 +28,12 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/alamat-pengiriman/tambah">
+            <UserAddressAdd />
+          </Route>
+          <Route path="/alamat-pengiriman">
+            <UserAddress />
           </Route>
           <Route path="/" component={Home} />
         </Switch>
