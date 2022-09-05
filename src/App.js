@@ -5,12 +5,16 @@ import 'upkit/dist/style.min.css';
 import store from './app/store';
 import Home from './pages/Home';
 import { listen } from './app/listener';
+import { getCart } from './api/cart';
 import Register from './pages/Register/index';
 import RegisterSuccess from './pages/RegisterSuccess/index';
 import Login from './pages/Login';
 
 function App() {
-  React.useEffect(() => { listen() }, []);
+  React.useEffect(() => {
+    listen();
+    getCart();
+  }, []);
 
   return (
     <Provider store={store}>
