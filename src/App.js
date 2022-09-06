@@ -2,6 +2,8 @@ import React from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import 'upkit/dist/style.min.css';
+import GuardRoute from './components/GuardRoute';
+import GuestOnlyRoute from './components/GuestOnlyRoute';
 import store from './app/store';
 import Home from './pages/Home';
 import { listen } from './app/listener';
@@ -15,6 +17,7 @@ import UserAddress from './pages/UserAddress';
 import Checkout from './pages/Checkout';
 import Invoice from './pages/Invoice';
 import UserOrders from './pages/UserOrders';
+import Logout from './pages/Logout';
 
 
 function App() {
@@ -27,31 +30,34 @@ function App() {
     <Provider store={store}>
       <Router>
         <Switch>
-          <Route path="/register/berhasil">
+          <GuestOnlyRoute path="/register/berhasil">
             <RegisterSuccess />
-          </Route>
-          <Route path="/register" component={Register} />
-          <Route path="/login">
+          </GuestOnlyRoute>
+          <GuestOnlyRoute path="/register" component={Register} />
+          <GuestOnlyRoute path="/login">
             <Login />
-          </Route>
-          <Route path="/account">
+          </GuestOnlyRoute>
+          <GuardRoute path="/account">
             <UserAccount />
-          </Route>
-          <Route path="/alamat-pengiriman/tambah">
+          </GuardRoute>
+          <GuardRoute path="/alamat-pengiriman/tambah">
             <UserAddressAdd />
-          </Route>
-          <Route path="/alamat-pengiriman">
+          </GuardRoute>
+          <GuardRoute path="/alamat-pengiriman">
             <UserAddress />
-          </Route>
-          <Route path="/checkout">
+          </GuardRoute>
+          <GuardRoute path="/checkout">
             <Checkout />
-          </Route>
-          <Route path="/invoice/:order_id">
+          </GuardRoute>
+          <GuardRoute path="/invoice/:order_id">
             <Invoice />
-          </Route>
-          <Route path="/pesanan">
+          </GuardRoute>
+          <GuardRoute path="/pesanan">
             <UserOrders />
-          </Route>
+          </GuardRoute>
+          <GuardRoute path="/logout">
+            <Logout />
+          </GuardRoute>
           <Route path="/" component={Home} />
         </Switch>
       </Router>

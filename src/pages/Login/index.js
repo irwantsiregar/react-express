@@ -24,10 +24,10 @@ export default function Login() {
   const onSubmit = async ({ email, password }) => {
     setStatus(statuslist.process);
     let { data } = await login(email, password);
+    
     if (data.error) {
       setError('password', {
-        type: 'invalidCredential', message:
-          data.message
+        type: 'invalidCredential', message: data.message
       });
       setStatus(statuslist.error);
     } else {
@@ -38,7 +38,7 @@ export default function Login() {
 
     setStatus(statuslist.success);
   }
-  
+
   return (
     <LayoutOne size="small">
       <br />
@@ -63,8 +63,7 @@ export default function Login() {
               ref={register(rules.password)}
             />
           </FormControl>
-          <Button fitContainer size="large" disabled={status ===
-            'process'}>
+          <Button fitContainer size="large" disabled={status === 'process'}>
             Login
           </Button>
         </form>

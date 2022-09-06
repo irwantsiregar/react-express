@@ -67,7 +67,6 @@ export default function Invoice() {
               <b>{invoice?.user?.full_name} </b> <br />
               {invoice?.user?.email} <br /> <br />
               {invoice?.delivery_address?.detail} <br />
-              {console.log(invoice)} <br />
               {invoice?.delivery_address?.kelurahan},
               {invoice?.delivery_address?.kecamatan} <br />
               {invoice?.delivery_address?.kabupaten} <br />
