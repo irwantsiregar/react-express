@@ -12,6 +12,7 @@ import Login from './pages/Login';
 import UserAddressAdd from './pages/UserAddressAdd';
 import UserAddress from './pages/UserAddress';
 import Checkout from './pages/Checkout';
+import Invoice from './pages/Invoice';
 
 function App() {
   React.useEffect(() => {
@@ -38,6 +39,9 @@ function App() {
           </Route>
           <Route path="/checkout">
             <Checkout />
+          </Route>
+          <Route path="/invoice/:order_id">
+            <Invoice />
           </Route>
           <Route path="/" component={Home} />
         </Switch>

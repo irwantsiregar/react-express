@@ -1,6 +1,6 @@
 import * as axios from 'axios';
 import { config } from "../config";
-import { createOrder } from '../../api/order';
+
 export async function getOrders(params) {
   let { token } = localStorage.getItem('auth') ? JSON.parse(localStorage.getItem('auth')) : {};
   let { limit, page } = params;
