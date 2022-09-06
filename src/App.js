@@ -11,6 +11,7 @@ import RegisterSuccess from './pages/RegisterSuccess/index';
 import Login from './pages/Login';
 import UserAddressAdd from './pages/UserAddressAdd';
 import UserAddress from './pages/UserAddress';
+import Checkout from './pages/Checkout';
 
 function App() {
   React.useEffect(() => {
@@ -34,6 +35,9 @@ function App() {
           </Route>
           <Route path="/alamat-pengiriman">
             <UserAddress />
+          </Route>
+          <Route path="/checkout">
+            <Checkout />
           </Route>
           <Route path="/" component={Home} />
         </Switch>

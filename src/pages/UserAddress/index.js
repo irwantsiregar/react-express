@@ -27,7 +27,7 @@ export default function UserAddress() {
         <Text as="h3"> Alamat pengiriman </Text>
         <br />
         <div>
-          <Link to="tambah">
+          <Link to="/alamat-pengiriman/tambah">
             <Button> Tambah baru</Button>
           </Link>
           <br />
