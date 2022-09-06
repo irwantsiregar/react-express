@@ -9,10 +9,13 @@ import { getCart } from './api/cart';
 import Register from './pages/Register/index';
 import RegisterSuccess from './pages/RegisterSuccess/index';
 import Login from './pages/Login';
+import UserAccount from './pages/UserAccount';
 import UserAddressAdd from './pages/UserAddressAdd';
 import UserAddress from './pages/UserAddress';
 import Checkout from './pages/Checkout';
 import Invoice from './pages/Invoice';
+import UserOrders from './pages/UserOrders';
+
 
 function App() {
   React.useEffect(() => {
@@ -31,6 +34,9 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/account">
+            <UserAccount />
+          </Route>
           <Route path="/alamat-pengiriman/tambah">
             <UserAddressAdd />
           </Route>
@@ -42,6 +48,9 @@ function App() {
           </Route>
           <Route path="/invoice/:order_id">
             <Invoice />
+          </Route>
+          <Route path="/pesanan">
+            <UserOrders />
           </Route>
           <Route path="/" component={Home} />
         </Switch>
